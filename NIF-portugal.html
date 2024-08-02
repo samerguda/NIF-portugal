@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب رقم التعريف الضريبي (NIF)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: right;
+            padding: 20px;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #datetime {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: right;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .copy-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .redirect-btn {
+            background-color: #008CBA;
+            color: white;
+        }
+
+        .print-btn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .dark-mode-btn {
+            background-color: #555;
+            color: white;
+        }
+
+        .dark-mode {
+            background-color: #2e2e2e;
+            color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Current Date and Time -->
+    <div id="datetime"></div>
+
+    <!-- Content Table -->
+    <table id="contentTable">
+        <thead>
+            <tr>
+                <th>العنوان</th>
+                <th>التفاصيل</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>طلب رقم التعريف الضريبي (NIF)</td>
+                <td>
+                    يجب أن يكون لدى الشخص الأجنبي ، المقيم أو غير المقيم في البرتغال ، والذي يعمل ويدفع الضرائب في البرتغال ، رقم التعريف الضريبي (NIF).
+                </td>
+            </tr>
+            <tr>
+                <td>المستندات الضرورية</td>
+                <td>
+                    تحتاج إلى المستندات التالية لتقديم الطلب NIF:
+                    <ul>
+                        <li>للمقيم في البرتغال: وثيقة الهوية المدنية لبلد المنشأ أو جواز السفر وتصريح الإقامة.</li>
+                        <li>لغير المقيم: وثيقة هوية أو جواز سفر وأن يكون لديك ممثل ضريبي مقيم في البرتغال.</li>
+                        <li>للطفل: بدون جواز سفر إثبات الميلاد.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>كيف يتم طلب الرقم الضريبي</td>
+                <td>
+                    من قبل الشخص نفسه:
+                    <ul>
+                        <li>حدد موعدًا للخدمة حضوريًا من خلال مركز الخدمة الهاتفية على الرقم 217206707.</li>
+                        <li>خلال أيام العمل، من التاسعة صباحًا إلى السابعة مساءً.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>الممثل</td>
+                <td>
+                    إذا كان الشخص الذي طلب رقم التعريف الضريبي يقيم خارج الاتحاد الأوروبي، في:
+                    <ul>
+                        <li>إسلندا - النرويج - ليختنشتاين</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Buttons -->
+    <button class="copy-btn" onclick="copyContent()">نسخ المحتوى</button>
+    <button class="redirect-btn" onclick="redirectToWebsite()">الذهاب إلى موقع E portugal</button>
+    <button class="print-btn" onclick="printPage()">طباعة</button>
+    <button class="dark-mode-btn" onclick="toggleDarkMode()">تبديل الوضع الداكن</button>
+
+    <!-- Scripts -->
+    <script>
+        // Display current date and time
+        function updateDateTime() {
+            const dateTimeElement = document.getElementById('datetime');
+            const now = new Date();
+            const formattedDateTime = now.toLocaleString('ar-EG', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric',
+                hour12: false
+            });
+            dateTimeElement.textContent = 'التاريخ والوقت الحالي: ' + formattedDateTime;
+        }
+
+        setInterval(updateDateTime, 1000);
+
+        // Copy content to clipboard
+        function copyContent() {
+            const range = document.createRange();
+            range.selectNode(document.getElementById('contentTable'));
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            alert('تم نسخ المحتوى بنجاح!');
+        }
+
+        // Redirect to another website
+        function redirectToWebsite() {
+            window.location.href = 'https://eportugal.gov.pt/en/migrantes-viver-e-trabalhar-em-portugal/migrantes-impostos-e-seguranca-social-em-portugal/como-pedir-o-nif-e-o-niss-para-cidadaos-estrangeiros-em-portugal-arabe'; // Change this URL to the desired website
+        }
+
+        // Print the page
+        function printPage() {
+            window.print();
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+
+</body>
+</html>
